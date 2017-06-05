@@ -70,7 +70,13 @@ class ViewController: UIViewController {
             if error != nil
             {
                 
-                print(error!.localizedDescription)
+                let alert = UIAlertController(title: "Error 404", message: "Internet Problems...", preferredStyle: .alert)
+            
+                let cancelar = UIAlertAction(title: "OK", style: .cancel)
+                
+                alert.addAction(cancelar)
+                
+                self.present(alert, animated: true)
                 
             }
             else
