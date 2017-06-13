@@ -105,8 +105,8 @@ class ViewController: UIViewController {
                     var autores: String = ""
                     
                     
-                       if let Data = data,
-                        let json = try? JSONSerialization.jsonObject(with: Data, options: []) as? [String: Any]
+                       if let Datos = data,
+                        let json = try? JSONSerialization.jsonObject(with: Datos, options: []) as? [String: Any]
                        {
                     
                         if ((json?.keys.count)!>0)
@@ -114,9 +114,13 @@ class ViewController: UIViewController {
                             if let ISBN = json?["ISBN:"+self.libro] as? [String: Any]
                             {
                         
-                                if let discoPortada = ISBN["cover"] as? [String: Any]
+                                if let cover = ISBN["cover"] as? [String: Any]
                                 {
-                                    self.ivPortada.image = discoPortada["small"] as? UIImage
+                                    let discoPortada = cover["medium"] as! NSString? as String?
+                                    let imagen = URL(string: discoPortada!)
+                                    let dataImage = try? Data(contentsOf: imagen!)
+                                    self.ivPortada.image = UIImage(data: dataImage!)
+                   
                                 }
                         
                                 let titulo = ISBN["title"] as! NSString as String
