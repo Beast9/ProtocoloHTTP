@@ -48,6 +48,12 @@ class ViewController: UIViewController {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        etBuscar.resignFirstResponder()
+        llamadaAsincrona()
+        return true
+    }
+    
     func showAlertMessage (title: String, message: String, owner:UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.actionSheet)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{ (ACTION :UIAlertAction!)in
