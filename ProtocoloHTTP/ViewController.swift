@@ -30,6 +30,12 @@ class ViewController: UIViewController {
         {
             llamadaAsincrona()
         }
+        else
+        {
+            self.showAlertMessage(title: "Advertencia", message: "Por favor digite el ISBN a buscar", owner: self)
+        
+            return
+        }
     }
     
     
@@ -40,6 +46,14 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    func showAlertMessage (title: String, message: String, owner:UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{ (ACTION :UIAlertAction!)in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     
     
     @IBAction func btnClear(_ sender: Any) {
@@ -84,8 +98,39 @@ class ViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     
-                    let texto = NSString(data: data! as Data, encoding: String.Encoding.utf8.rawValue)
-                    self.tvJson.text = texto! as String
+                    
+                    //let texto = NSString(data: data! as Data, encoding: String.Encoding.utf8.rawValue)
+                    
+                    var autores: String = ""
+                    
+                    do{
+                        let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
+                        let disco1 = json as! NSDictionary
+                        let disco2 = disco1["ISBN:"+self.libro] as! NSDictionary
+                        let titulo = disco2["title"] as! NSString as String
+                        
+                        let disco3 = disco2["authors"] as! NSArray
+                        
+                        for i in 0 ..< disco3.count
+                        {
+                            let disco4 = disco3[i] as! NSDictionary
+                            autores += disco4["name"] as! NSString as String + "\n"
+                            
+                        }
+                        
+                        self.tvJson.text = "TITULO: \n"
+                        self.tvJson.text = self.tvJson.text + titulo+"\n\n"
+                        
+                        self.tvJson.text = self.tvJson.text + "AUTORES: \n"
+                        self.tvJson.text = self.tvJson.text + autores
+                        
+                    }
+                    catch _ {
+                        
+                    }
+                    
+                    
+                    
                     
                 }
                 
