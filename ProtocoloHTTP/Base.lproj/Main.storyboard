@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,9 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="9MK-Sc-Wxz">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="9MK-Sc-Wxz">
                                 <rect key="frame" x="0.0" y="57" width="375" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -32,42 +32,74 @@
                                     <action selector="btnIr:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="Nni-z2-cKM"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixg-iZ-KOy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixg-iZ-KOy">
                                 <rect key="frame" x="16" y="95" width="161" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="kua-Se-v42"/>
+                                </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <state key="normal" title="Clear"/>
                                 <connections>
                                     <action selector="btnClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M0w-tX-mon"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jl2-ZR-kRc">
-                                <rect key="frame" x="0.0" y="133" width="375" height="514"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jl2-ZR-kRc">
+                                <rect key="frame" x="0.0" y="133" width="375" height="201"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Libro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPw-pb-WTK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Libro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPw-pb-WTK">
                                 <rect key="frame" x="16" y="28" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="lNP-MV-Gti"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-e5-x9P">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-e5-x9P">
                                 <rect key="frame" x="194" y="95" width="165" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="btnBuscar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n8k-Cd-vHh"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="55K-qc-od8">
+                                <rect key="frame" x="75" y="342" width="225" height="215"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="215" id="jfd-dD-53h"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92045538379442149" green="0.92884037066632164" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="55K-qc-od8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="59" id="0QZ-OJ-vjb"/>
+                            <constraint firstItem="rPw-pb-WTK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="3TX-Yz-tDa"/>
+                            <constraint firstItem="55K-qc-od8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="79t-Cc-8zX"/>
+                            <constraint firstItem="ixg-iZ-KOy" firstAttribute="top" secondItem="9MK-Sc-Wxz" secondAttribute="bottom" constant="8" symbolic="YES" id="Edi-fV-enJ"/>
+                            <constraint firstItem="9MK-Sc-Wxz" firstAttribute="leading" secondItem="jl2-ZR-kRc" secondAttribute="leading" id="GAC-HF-uDn"/>
+                            <constraint firstItem="55K-qc-od8" firstAttribute="top" secondItem="jl2-ZR-kRc" secondAttribute="bottom" constant="8" symbolic="YES" id="MQt-mV-8wd"/>
+                            <constraint firstItem="ixg-iZ-KOy" firstAttribute="baseline" secondItem="CRf-e5-x9P" secondAttribute="baseline" id="SX1-Pe-CZt"/>
+                            <constraint firstItem="CRf-e5-x9P" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="SZH-ts-Hhp"/>
+                            <constraint firstItem="55K-qc-od8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UnP-zT-4tO"/>
+                            <constraint firstItem="9MK-Sc-Wxz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vuf-fr-w9I"/>
+                            <constraint firstItem="55K-qc-od8" firstAttribute="top" secondItem="jl2-ZR-kRc" secondAttribute="bottom" constant="8" id="VwT-vY-aoL"/>
+                            <constraint firstItem="55K-qc-od8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aie-LE-Jpg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="55K-qc-od8" secondAttribute="bottom" constant="110" id="bvt-iv-z8K"/>
+                            <constraint firstItem="rPw-pb-WTK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="ccJ-g1-raU"/>
+                            <constraint firstItem="jl2-ZR-kRc" firstAttribute="centerX" secondItem="55K-qc-od8" secondAttribute="centerX" id="df4-pw-TCy"/>
+                            <constraint firstItem="55K-qc-od8" firstAttribute="top" secondItem="jl2-ZR-kRc" secondAttribute="bottom" constant="8" id="hyv-DL-4q0"/>
+                            <constraint firstItem="rPw-pb-WTK" firstAttribute="leading" secondItem="ixg-iZ-KOy" secondAttribute="leading" id="pSs-hP-WJy"/>
+                            <constraint firstItem="CRf-e5-x9P" firstAttribute="leading" secondItem="ixg-iZ-KOy" secondAttribute="trailing" constant="17" id="pse-xf-TjU"/>
+                            <constraint firstItem="9MK-Sc-Wxz" firstAttribute="trailing" secondItem="jl2-ZR-kRc" secondAttribute="trailing" id="wLT-25-uDn"/>
+                            <constraint firstItem="jl2-ZR-kRc" firstAttribute="top" secondItem="ixg-iZ-KOy" secondAttribute="bottom" constant="8" symbolic="YES" id="x8H-ee-tYy"/>
+                            <constraint firstItem="9MK-Sc-Wxz" firstAttribute="top" secondItem="rPw-pb-WTK" secondAttribute="bottom" constant="8" symbolic="YES" id="zya-12-Gbn"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="etBuscar" destination="9MK-Sc-Wxz" id="rXO-dr-8OF"/>
+                        <outlet property="ivPortada" destination="55K-qc-od8" id="VgX-vr-XAj"/>
                         <outlet property="tvJson" destination="jl2-ZR-kRc" id="toh-ZT-WBJ"/>
                     </connections>
                 </viewController>

@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var etBuscar: UITextField!
     @IBOutlet weak var tvJson: UITextView!
+    @IBOutlet weak var ivPortada: UIImageView!
     var libro: String!
 
     override func viewDidLoad() {
@@ -103,33 +104,54 @@ class ViewController: UIViewController {
                     
                     var autores: String = ""
                     
-                    do{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
-                        let disco1 = json as! NSDictionary
-                        let disco2 = disco1["ISBN:"+self.libro] as! NSDictionary
-                        let titulo = disco2["title"] as! NSString as String
-                        
-                        let disco3 = disco2["authors"] as! NSArray
-                        
-                        for i in 0 ..< disco3.count
+                    
+                       if let Data = data,
+                        let json = try? JSONSerialization.jsonObject(with: Data, options: []) as? [String: Any]
+                       {
+                    
+                        if ((json?.keys.count)!>0)
                         {
-                            let disco4 = disco3[i] as! NSDictionary
-                            autores += disco4["name"] as! NSString as String + "\n"
+                            if let ISBN = json?["ISBN:"+self.libro] as? [String: Any]
+                            {
+                        
+                                if let discoPortada = ISBN["cover"] as? [String: Any]
+                                {
+                                    self.ivPortada.image = discoPortada["small"] as? UIImage
+                                }
+                        
+                                let titulo = ISBN["title"] as! NSString as String
+                        
+                                let disco3 = ISBN["authors"] as! NSArray
+                        
+                                for i in 0 ..< disco3.count
+                                {
+                                    let disco4 = disco3[i] as! NSDictionary
+                                    autores += disco4["name"] as! NSString as String + "\n"
+                            
+                                }
+                        
+                                self.tvJson.text = "TITULO: \n"
+                                self.tvJson.text = self.tvJson.text + titulo+"\n\n"
+                        
+                                self.tvJson.text = self.tvJson.text + "AUTORES: \n"
+                                self.tvJson.text = self.tvJson.text + autores
+                            }
                             
                         }
-                        
-                        self.tvJson.text = "TITULO: \n"
-                        self.tvJson.text = self.tvJson.text + titulo+"\n\n"
-                        
-                        self.tvJson.text = self.tvJson.text + "AUTORES: \n"
-                        self.tvJson.text = self.tvJson.text + autores
-                        
-                    }
-                    catch _ {
-                        
-                    }
                     
+                        else
+                        {
+                            let alert = UIAlertController(title: "ISBN invalido", message: "No se encontro ISBN", preferredStyle: .alert)
+                            
+                            let cancelar = UIAlertAction(title: "OK", style: .cancel)
+                            
+                            alert.addAction(cancelar)
+                            
+                            self.present(alert, animated: true)
+
+                        }
                     
+                    }
                     
                     
                 }
